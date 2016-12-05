@@ -6,3 +6,5 @@ applications:
   name: mca-java
   host: mca-java
   disk_quota: 1024M
+  services:
+  - mca-dw

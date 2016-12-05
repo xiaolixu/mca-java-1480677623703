@@ -81,7 +81,7 @@ public class OAuthServlet extends HttpServlet {
         String idToken = parsedBody.getString("id_token");
 
         //byte[] decodedIdTokenPayload = Base64.getUrlDecoder().decode(idToken.split("\\.")[1]);
-        byte[] decodedIdTokenPayload = Base64.decode().decode(idToken.split("\\.")[1],Base64.URL_SAFE);
+        byte[] decodedIdTokenPayload = Base64.decode(idToken.split("\\.")[1], Base64.URL_SAFE);
         JSONObject decodedIdentityToken = new JSONObject(new String(decodedIdTokenPayload));
         JSONObject userIdentity = decodedIdentityToken.getJSONObject("imf.user");
 

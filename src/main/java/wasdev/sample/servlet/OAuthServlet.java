@@ -3,14 +3,14 @@ package wasdev.sample.servlet;
 
 import okhttp3.*;
 import org.json.JSONObject;
-import net.iharder.Base64;
+//import net.iharder.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-//import java.util.Base64;
+import java.util.Base64;
 import java.util.logging.Logger;
 
 public class OAuthServlet extends HttpServlet {
@@ -80,8 +80,8 @@ public class OAuthServlet extends HttpServlet {
         String accessToken = parsedBody.getString("access_token");
         String idToken = parsedBody.getString("id_token");
 
-        //byte[] decodedIdTokenPayload = Base64.getUrlDecoder().decode(idToken.split("\\.")[1]);
-        byte[] decodedIdTokenPayload = Base64.decode(idToken.split("\\.")[1], Base64.URL_SAFE);
+        byte[] decodedIdTokenPayload = Base64.getUrlDecoder().decode(idToken.split("\\.")[1]);
+        //byte[] decodedIdTokenPayload = Base64.decode(idToken.split("\\.")[1], Base64.URL_SAFE);
         JSONObject decodedIdentityToken = new JSONObject(new String(decodedIdTokenPayload));
         JSONObject userIdentity = decodedIdentityToken.getJSONObject("imf.user");
 
